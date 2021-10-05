@@ -43,6 +43,8 @@
 #include <X11/Xft/Xft.h>
 #include <X11/Xlib-xcb.h>
 #include <xcb/res.h>
+#include <sys/types.h>
+#include <libutil.h>
 
 #include "drw.h"
 #include "util.h"
@@ -68,6 +70,7 @@
 #define SPTAGMASK		(((1 << LENGTH(scratchpads))-1) << LENGTH(tags))
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 #define TRUNC(X,A,B)            (MAX((A), MIN((X), (B))))
+
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
@@ -2407,7 +2410,8 @@ getparentprocess(pid_t p)
 	if (!proc)
 		return (pid_t)0;
 
-	v = proc->ki_ppid;
+	//v = proc->ki_ppid;
+	v = 0;
 	free(proc);
 #endif
 	return (pid_t)v;

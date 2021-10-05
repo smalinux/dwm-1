@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+extern struct kinfo_proc proc;
+
 typedef struct {
 	Cursor cursor;
 } Cur;
